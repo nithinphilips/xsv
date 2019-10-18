@@ -66,6 +66,7 @@ macro_rules! command_list {
     stats       Compute basic statistics
     table       Align CSV data into columns
     dedup       Remove redundant rows
+    trim        Removes leading and trailing whitespace from all fields
 "
     )
 }
@@ -165,6 +166,7 @@ enum Command {
     Stats,
     Table,
     Dedup,
+    Trim
 }
 
 impl Command {
@@ -202,6 +204,7 @@ impl Command {
             Command::Stats => cmd::stats::run(argv),
             Command::Table => cmd::table::run(argv),
             Command::Dedup => cmd::dedup::run(argv),
+            Command::Trim => cmd::trim::run(argv),
         }
     }
 }
