@@ -15,6 +15,12 @@ a quick tour of several commands.
 
 Dual-licensed under MIT or the [UNLICENSE](https://unlicense.org).
 
+### This Fork
+Changes from the orginal source:
+
+* Added these commands: **trim**, **fill**
+* Merged these commands: [dedup](https://github.com/nithinphilips/xsv/commits?author=Ronaldho80) by Ronaldho80, [rename](https://github.com/nithinphilips/xsv/commits?author=jlumbroso) by jlumbroso
+
 
 ### Available commands
 
