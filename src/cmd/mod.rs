@@ -3,6 +3,7 @@ pub mod count;
 pub mod fixlengths;
 pub mod flatten;
 pub mod fmt;
+pub mod fill;
 pub mod frequency;
 pub mod headers;
 pub mod index;

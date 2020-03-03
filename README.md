@@ -52,6 +52,9 @@ Dual-licensed under MIT or the [UNLICENSE](https://unlicense.org).
   (i.e., mean, standard deviation, median, range, etc.)
 * **table** - Show aligned output of any CSV data using
   [elastic tabstops](https://github.com/BurntSushi/tabwriter).
+* **trim** - Removes whitespace from the beginning and end of all fields.
+* **dedup** - Removes duplicate rows from the CSV
+* **fill** - Replaces any fields matched by regex with value of another column
 
 
 ### A whirlwind tour

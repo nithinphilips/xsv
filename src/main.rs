@@ -49,6 +49,7 @@ macro_rules! command_list {
     flatten     Show one field per line
     fmt         Format CSV output (change field delimiter)
     frequency   Show frequency tables
+    fill        Replaces empty fields with another field
     headers     Show header names
     help        Show this usage message.
     index       Create CSV index for faster access
@@ -148,6 +149,7 @@ enum Command {
     FixLengths,
     Flatten,
     Fmt,
+    Fill,
     Frequency,
     Headers,
     Help,
@@ -186,6 +188,7 @@ impl Command {
             Command::FixLengths => cmd::fixlengths::run(argv),
             Command::Flatten => cmd::flatten::run(argv),
             Command::Fmt => cmd::fmt::run(argv),
+            Command::Fill => cmd::fill::run(argv),
             Command::Frequency => cmd::frequency::run(argv),
             Command::Headers => cmd::headers::run(argv),
             Command::Help => { wout!("{}", USAGE); Ok(()) }
