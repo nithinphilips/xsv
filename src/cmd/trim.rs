@@ -7,6 +7,7 @@ Trims the fields of CSV
 
 Usage:
     xsv trim [options] [<input>]
+    xsv trim --help
 
 Common options:
     -h, --help             Display this message
@@ -34,33 +35,22 @@ pub fn run(argv: &[&str]) -> CliResult<()> {
         .no_headers(args.flag_no_headers);
 
     let mut rdr = rconfig.reader()?;
-
-    let mut all = rdr.records().collect::<Result<Vec<_>, _>>()?;
-
     let mut wtr = Config::new(&args.flag_output).writer()?;
 
-
     if !rconfig.no_headers {
-        let headers = rdr.headers()?;
+        let mut headers = rdr.headers()?.clone();
 
         if !headers.is_empty() {
-            let mut new_header = Vec::new();
-            for col in headers.iter() {
-                new_header.push(col.trim());
-            }
-            wtr.write_record(&new_header)?;
+            headers.trim();
+            wtr.write_record(&headers)?;
         }
     }
 
-    for r in all.into_iter() {
-        let mut new_row = Vec::new();
-        for col in r.iter() {
-            new_row.push(col.trim());
-        }
-
-        wtr.write_record(&new_row)?;
+    let mut record = csv::ByteRecord::new();
+    while rdr.read_byte_record(&mut record)? {
+        record.trim();
+        wtr.write_byte_record(&record)?;
     }
-
 
     Ok(wtr.flush()?)
 }
